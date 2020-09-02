@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/dp_10"
+    android:focusableInTouchMode="true">
+
+    <CheckBox
+        android:id="@+id/cb_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="问题"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_wenhao"
+        android:layout_width="@dimen/dp_10"
+        android:layout_height="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_5"
+        android:src="@mipmap/ic_launcher"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/cb_check"
+        app:layout_constraintLeft_toRightOf="@id/cb_check"
+        app:layout_constraintTop_toTopOf="@id/cb_check" />
+
+    <EditText
+        android:id="@+id/et_other"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_0"
+        android:background="@drawable/edit_bg"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/cb_check"
+        app:layout_constraintLeft_toRightOf="@id/cb_check"
+        app:layout_constraintTop_toTopOf="@id/cb_check" />
+
+    <TextView
+        android:id="@+id/tv_wenhao_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="入院只能筛选的项"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@id/cb_check"
+        app:layout_constraintTop_toBottomOf="@id/cb_check" />
+
+</android.support.constraint.ConstraintLayout>

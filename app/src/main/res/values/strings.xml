@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">new_VTE_2020_01</string>
+    <string name="app_title_name">VTE风险评估</string>
+    <string name="null_text">暂无数据！</string>
+</resources>

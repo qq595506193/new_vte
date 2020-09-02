@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/dp_130"
+    android:layout_height="@dimen/dp_90"
+    android:layout_margin="@dimen/dp_2"
+    android:background="@drawable/edit_bg"
+    android:orientation="vertical">
+
+    <!--        顶部vte，评估等图标-->
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_15"
+        android:layout_margin="@dimen/dp_1"
+        android:background="@color/card_back_ground"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_vte"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tv_ping"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_ping"
+            android:layout_width="@dimen/dp_15"
+            android:layout_height="@dimen/dp_0"
+            android:background="@mipmap/ping_02"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/rv_vte"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <!--        患者资料等-->
+    <LinearLayout
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_0"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/tv_patient_type"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_top">
+
+        <!--            左边照片与姓名床位号-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_patient_icon"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_40"
+                android:src="@mipmap/nan" />
+
+            <TextView
+                android:id="@+id/tv_patient_name"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="小常"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_6" />
+
+            <TextView
+                android:id="@+id/tv_patient_bed_number"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="01床"
+                android:textColor="@color/bed_number"
+                android:textSize="@dimen/sp_8" />
+
+        </LinearLayout>
+
+
+        <!--            右侧患者信息-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_patient_liushui"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_6" />
+
+            <TextView
+                android:id="@+id/tv_patient_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_6" />
+
+            <TextView
+                android:id="@+id/tv_patient_keshi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_6" />
+
+            <TextView
+                android:id="@+id/tv_patient_yisheng"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_6" />
+
+            <TextView
+                android:id="@+id/tv_patient_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/sp_6" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--        底部患者状态-->
+    <TextView
+        android:id="@+id/tv_patient_type"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_10"
+        android:layout_margin="@dimen/dp_1"
+        android:background="@color/card_back_ground"
+        android:gravity="center_vertical"
+        android:text="患者正在恢复中...50%"
+        android:textSize="@dimen/sp_6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+</android.support.constraint.ConstraintLayout>
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+
+    <!--    黑色-->
+    <color name="black">#000000</color>
+    <!--    白色-->
+    <color name="white">#ffffff</color>
+
+    <!--  登录页面标题背景色  -->
+    <color name="title_root">#7a77d4</color>
+    <!--    登录页白框-->
+    <color name="login_log">#e3e8ef</color>
+    <!--    登录按钮色-->
+    <color name="login_btn">#41abb3</color>
+    <!--    患者列表标题背景色-->
+    <color name="patient_title">#3b4046</color>
+
+    <!--    输入框边框线色-->
+    <color name="gray_text">#989898</color>
+
+    <!--    卡片顶部背景色-->
+    <color name="card_back_ground">#EDEDED</color>
+
+    <!--    床位号颜色-->
+    <color name="bed_number">#5b90bc</color>
+
+    <!-- 危险等级颜色 -->
+    <color name="levelGreenColor">#05a558</color>
+    <color name="levelBlueColor">#6cbdfe</color>
+    <color name="levelYellowColor">#fed700</color>
+    <color name="levelOrangeColor">#ff7e00</color>
+    <color name="levelRedColor">#ff4e6b</color>
+
+    <!--    深灰色-->
+    <color name="color_shenhui_">#ff999999</color>
+
+
+</resources>
