@@ -37,6 +37,7 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btn_risk_history"
                 android:layout_width="@dimen/dp_0"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/dp_5"
@@ -46,6 +47,7 @@
                 android:textColor="@color/white" />
 
             <Button
+                android:id="@+id/btn_risk_next"
                 android:layout_width="@dimen/dp_0"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/dp_5"
@@ -55,6 +57,7 @@
                 android:textColor="@color/white" />
 
             <Button
+                android:id="@+id/btn_risk_no"
                 android:layout_width="@dimen/dp_0"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/dp_5"

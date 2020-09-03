@@ -45,6 +45,9 @@ import presenter.HistoryPresenter;
 import utils.LoadingDialog;
 import utils.SpUtil;
 
+/**
+ * 历史报告页
+ */
 public class HistoryActivity extends BaseMvpActivity<IHistoryContract.IHistoryModel, IHistoryContract.HistoryPresenter> implements IHistoryContract.IHistoryView {
 
     @BindView(R.id.tv_back)
@@ -127,6 +130,9 @@ public class HistoryActivity extends BaseMvpActivity<IHistoryContract.IHistoryMo
                 }
                 break;
             case R.id.iv_message:
+                Intent intentMsg = new Intent(this, MessageActivity.class);
+                intentMsg.putExtra("loginMsg", loginBean);
+                startActivity(intentMsg);
                 break;
             case R.id.iv_select_back:
                 break;

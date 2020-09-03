@@ -34,6 +34,9 @@ import ui.fragment.RiskAssessFragment;
 import utils.LoadingDialog;
 import utils.SpUtil;
 
+/**
+ * 评估页
+ */
 public class AssessActivity extends BaseMvpActivity<IAssessContract.IAssessModel, IAssessContract.AssessPresenter> implements IAssessContract.IAssessView {
 
     @BindView(R.id.tv_back)
@@ -75,13 +78,18 @@ public class AssessActivity extends BaseMvpActivity<IAssessContract.IAssessModel
      * @param v
      */
     @Override
-    @OnClick({R.id.tv_back, R.id.iv_select_back})
+    @OnClick({R.id.tv_back, R.id.iv_select_back, R.id.iv_message})
     public void widgetClick(View v) {
         switch (v.getId()) {
             case R.id.tv_back:
                 if (tvBack.getVisibility() == View.VISIBLE) {
                     finish();
                 }
+                break;
+            case R.id.iv_message:
+                Intent intentMsg = new Intent(this, MessageActivity.class);
+                intentMsg.putExtra("loginMsg", loginBean);
+                startActivity(intentMsg);
                 break;
             case R.id.iv_select_back:
                 break;

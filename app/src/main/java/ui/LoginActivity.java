@@ -31,6 +31,9 @@ import presenter.LoginPresenter;
 import utils.LoadingDialog;
 import utils.SpUtil;
 
+/**
+ * 登录页
+ */
 public class LoginActivity extends BaseMvpActivity<ILoginContract.ILoginModel, ILoginContract.LoginPresenter> implements ILoginContract.ILoginView {
 
     public static final String TAG_EXIT = "LoginActivity";

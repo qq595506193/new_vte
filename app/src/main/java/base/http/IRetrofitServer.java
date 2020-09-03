@@ -5,6 +5,8 @@ import java.util.HashMap;
 import bean.HistoryAssessBean;
 import bean.LoginBean;
 import bean.LoginTypeBean;
+import bean.MessageBean;
+import bean.MessageUpdateBean;
 import bean.PatientListBean;
 import bean.RefreshPatientBean;
 import bean.RiskAssessBean;
@@ -44,14 +46,14 @@ public interface IRetrofitServer {
     @GET
     Observable<SelectTablesBean> getRiskTableList(@Url String apiUrl, @QueryMap HashMap<String, Object> params);
 
-//    // 消息列表展示
-//    @GET
-//    Observable<MessageBean> doMessageListGet(@Url String apiUrl, @QueryMap HashMap<String, Object> params);
-//
-//    // 消息状态修改
-//    @GET
-//    Observable<MessageUpdateBean> doMessageTypeUpdateGet(@Url String apiUrl, @QueryMap HashMap<String, Object> params);
-//
+    // 消息列表展示
+    @GET
+    Observable<MessageBean> getMessageList(@Url String apiUrl, @QueryMap HashMap<String, Object> params);
+
+    // 消息状态修改
+    @GET
+    Observable<MessageUpdateBean> getMessageTypeUpdate(@Url String apiUrl, @QueryMap HashMap<String, Object> params);
+
 //    // 查询未读消息条数
 //    @GET
 //    Observable<ResponseBody> doMessageNumGet(@Url String apiUrl, @QueryMap HashMap<String, Object> params);

@@ -1,21 +1,19 @@
 package ui.fragment;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.new_vte_2020_01.R;
-
-import java.util.List;
 
 import adapter.RadioAdapter;
 import adapter.RiskAdater;
@@ -26,12 +24,25 @@ import bean.LoginBean;
 import bean.PatientListBean;
 import bean.RiskAssessBean;
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 import contract.IRiskFragmentContract;
 import presenter.RiskFragmentPresenter;
+import utils.PopWindowUtil;
 
 public class RiskAssessFragment extends BaseMvpFragment<IRiskFragmentContract.IRiskFragmentModel, IRiskFragmentContract.RiskFragmentPresenter> implements IRiskFragmentContract.IRiskFragmentView {
 
     public static final String TAG = "RiskAssessFragment";
+
+    @BindView(R.id.tv_risk_over_time)
+    TextView tvRiskOverTime;
+    @BindView(R.id.btn_risk_history)
+    Button btnRiskHistory;
+    @BindView(R.id.btn_risk_next)
+    Button btnRiskNext;
+    @BindView(R.id.btn_risk_no)
+    Button btnRiskNo;
 
     private RiskAssessViewModel mViewModel;
 
@@ -47,17 +58,40 @@ public class RiskAssessFragment extends BaseMvpFragment<IRiskFragmentContract.IR
     TextView tvScoreSum;// 模型总分
     @BindView(R.id.tv_level)
     TextView tvLevel;// 危险等级
+    @BindView(R.id.cly_01)
+    LinearLayout cly_01;
 
     private RiskAssessBean.ServerParamsBean.WENJUANNAMEBean wenjuannameBean;// 试卷数据
     private PatientListBean.ServerParamsBean serverParamsBean;// 当前患者信息
     private LoginBean loginBean;// 登录信息
     private RadioAdapter radioAdapter;
     private RiskAdater riskAdater;
+    private View contentView;//popupLayout
 
     public static RiskAssessFragment newInstance() {
         return new RiskAssessFragment();
     }
 
+
+    @Override
+    @OnClick({R.id.btn_risk_history, R.id.btn_risk_next, R.id.btn_risk_no})
+    public void widgetClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_risk_history:
+
+                break;
+            case R.id.btn_risk_next:
+                contentView = LayoutInflater.from(getActivity()).inflate(R.layout.popup_layout_risk_next, null);
+                PopWindowUtil.getInstance().makePopupWindow(getActivity(), cly_01, contentView, Color.WHITE);
+                PopWindowUtil.getInstance().showLocationWithAnimation(getActivity(), cly_01, 0, 0, 0);
+                break;
+            case R.id.btn_risk_no:
+                contentView = LayoutInflater.from(getActivity()).inflate(R.layout.popup_layout_risk_next, null);
+                PopWindowUtil.getInstance().makePopupWindow(getActivity(), cly_01, contentView, Color.WHITE);
+                PopWindowUtil.getInstance().showLocationWithAnimation(getActivity(), cly_01, 0, 0, 0);
+                break;
+        }
+    }
 
     @Override
     protected int setContentView() {

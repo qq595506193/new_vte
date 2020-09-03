@@ -43,6 +43,9 @@ import service.TimerService;
 import utils.LoadingDialog;
 import utils.SpUtil;
 
+/**
+ * 首页床位图
+ */
 public class SelectActivity extends BaseMvpActivity<IPatientListContract.IPatientListModel, IPatientListContract.PatientListPresenter> implements IPatientListContract.IPatientListView {
 
     public static final String TAG_INDEX = "SelectActivity";
@@ -69,7 +72,7 @@ public class SelectActivity extends BaseMvpActivity<IPatientListContract.IPatien
     TextView tvBed;// 患者床位号
     @BindView(R.id.et_bed)
     EditText etBed;
-//    @BindView(R.id.rb_section)
+    //    @BindView(R.id.rb_section)
 //    RadioButton rbSection;// 科室单元
 //    @BindView(R.id.rb_element)
 //    RadioButton rbElement;
@@ -111,6 +114,9 @@ public class SelectActivity extends BaseMvpActivity<IPatientListContract.IPatien
         switch (v.getId()) {
             case R.id.iv_message:
                 // 点击消息按钮
+                Intent intentMsg = new Intent(this, MessageActivity.class);
+                intentMsg.putExtra("loginMsg", loginBean);
+                startActivity(intentMsg);
                 break;
             case R.id.iv_select_back:
                 // 点击返回键

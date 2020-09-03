@@ -55,6 +55,11 @@ public class RadioAdapter extends RecyclerView.Adapter<RadioAdapter.ViewHolder> 
         tempButton.setText(xuanxiangBean.getGROUP_TAB());
         holder.rgGroup.addView(tempButton, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
         tempButton.setTag(xuanxiangBean.getGROUP_TAB_ID());
+
+        if (position == 0) {
+            tempButton.setChecked(true);
+        }
+
         holder.rgGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
             @Override

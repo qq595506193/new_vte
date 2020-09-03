@@ -32,6 +32,9 @@ import presenter.SelectTablePresenter;
 import utils.LoadingDialog;
 import utils.SpUtil;
 
+/**
+ * 主动评估选表页
+ */
 public class SelectTableActivity extends BaseMvpActivity<ISelectTableContract.ISelectTableModel, ISelectTableContract.SelectTablePresenter> implements ISelectTableContract.ISelectTableView {
 
     @BindView(R.id.tv_back)
@@ -74,6 +77,9 @@ public class SelectTableActivity extends BaseMvpActivity<ISelectTableContract.IS
                 finish();
                 break;
             case R.id.iv_message:
+                Intent intentMsg = new Intent(this, MessageActivity.class);
+                intentMsg.putExtra("loginMsg", loginBean);
+                startActivity(intentMsg);
                 break;
             case R.id.iv_select_back:
                 break;

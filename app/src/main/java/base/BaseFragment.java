@@ -12,7 +12,12 @@ import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements View.OnClickListener {
+
+    /**
+     * View点击
+     **/
+    public abstract void widgetClick(View v);
 
     private Unbinder unbinder;
 
@@ -43,6 +48,11 @@ public abstract class BaseFragment extends Fragment {
      * @return 布局的layoutId
      */
     protected abstract int setContentView();
+
+    @Override
+    public void onClick(View v) {
+        widgetClick(v);
+    }
 
     protected abstract void initView();
 

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/dp_150"
+    android:layout_height="@dimen/dp_150">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_title"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_20"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_0"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:gravity="center_vertical"
+            android:text="下次评估"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/iv_pop_back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_pop_back"
+            android:layout_width="@dimen/dp_10"
+            android:layout_height="@dimen/dp_0"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_time"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_title">
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_cause"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_time">
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_btn"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_cause">
+
+        <Button
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            android:layout_weight="1.0"
+            android:background="@drawable/btn_cancel"
+            android:text="取消"
+            android:textColor="@color/gray_text" />
+
+        <Button
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            android:layout_weight="1.0"
+            android:background="@drawable/btn_sure"
+            android:text="确定"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

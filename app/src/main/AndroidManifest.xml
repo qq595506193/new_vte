@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="ui.SelectTableActivity"></activity>
+        <activity android:name="ui.MessageActivity"></activity>
+        <activity android:name="ui.SelectTableActivity" />
         <activity
             android:name="ui.HistoryActivity"
             android:launchMode="singleTop" />
