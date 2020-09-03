@@ -277,15 +277,15 @@ public class SelectActivity extends BaseMvpActivity<IPatientListContract.IPatien
         bedAdapter.setItemClick(new BedAdapter.ItemClick() {
             @Override
             public void setItemClickListener(PatientListBean.ServerParamsBean serverParamsBean, int position) {
-                Intent intent = new Intent(SelectActivity.this, HistoryActivity.class);
-                intent.putExtra("patientInfo", serverParamsBean);
-                intent.putExtra("loginMsg", loginBean);
-                startActivity(intent);
+//                Intent intent = new Intent(SelectActivity.this, HistoryActivity.class);
+//                intent.putExtra("patientInfo", serverParamsBean);
+//                intent.putExtra("loginMsg", loginBean);
+//                startActivity(intent);
 
-//                Intent intentToDocAudit = new Intent(SelectActivity.this, DocAuditActivity.class);
-//                intentToDocAudit.putExtra("patientInfo", serverParamsBean);
-//                intentToDocAudit.putExtra("loginMsg", loginBean);
-//                startActivity(intentToDocAudit);
+                Intent intentToDocAudit = new Intent(SelectActivity.this, DocAuditActivity.class);
+                intentToDocAudit.putExtra("patientInfo", serverParamsBean);
+                intentToDocAudit.putExtra("loginMsg", loginBean);
+                startActivity(intentToDocAudit);
             }
         });
 

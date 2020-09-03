@@ -36,6 +36,9 @@
     <!--    深灰色-->
     <color name="color_shenhui_">#ff999999</color>
 
+    <!--    无名色——偏灰-->
+    <color name="color_gra_table_title">#EEEEEE</color>
+
 
     <color name="white">#FFFFFF</color>
     <!-- 白色 -->

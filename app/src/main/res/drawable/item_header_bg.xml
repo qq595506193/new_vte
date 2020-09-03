@@ -6,7 +6,7 @@
         android:right="1dp"
         android:top="1dp">
         <shape>
-            <solid android:color="@color/gray_text"></solid>
+            <solid android:color="@color/color_gra_table_title"></solid>
         </shape>
     </item>
 
