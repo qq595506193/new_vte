@@ -277,15 +277,15 @@ public class SelectActivity extends BaseMvpActivity<IPatientListContract.IPatien
         bedAdapter.setItemClick(new BedAdapter.ItemClick() {
             @Override
             public void setItemClickListener(PatientListBean.ServerParamsBean serverParamsBean, int position) {
-//                Intent intent = new Intent(SelectActivity.this, HistoryActivity.class);
-//                intent.putExtra("patientInfo", serverParamsBean);
-//                intent.putExtra("loginMsg", loginBean);
-//                startActivity(intent);
+                Intent intent = new Intent(SelectActivity.this, HistoryActivity.class);
+                intent.putExtra("patientInfo", serverParamsBean);
+                intent.putExtra("loginMsg", loginBean);
+                startActivity(intent);
 
-                Intent intentToDocAudit = new Intent(SelectActivity.this, DocAuditActivity.class);
-                intentToDocAudit.putExtra("patientInfo", serverParamsBean);
-                intentToDocAudit.putExtra("loginMsg", loginBean);
-                startActivity(intentToDocAudit);
+//                Intent intentToDocAudit = new Intent(SelectActivity.this, DocAuditActivity.class);
+//                intentToDocAudit.putExtra("patientInfo", serverParamsBean);
+//                intentToDocAudit.putExtra("loginMsg", loginBean);
+//                startActivity(intentToDocAudit);
             }
         });
 
@@ -333,7 +333,7 @@ public class SelectActivity extends BaseMvpActivity<IPatientListContract.IPatien
         if (loadingDialog == null) {
             loadingDialog = LoadingDialog.getDialog(this,
                     "努力加载中",
-                    true,
+                    false,
                     null);
         } else if (loadingDialog.isShowing()) {
             loadingDialog.setMessage("努力加载中");

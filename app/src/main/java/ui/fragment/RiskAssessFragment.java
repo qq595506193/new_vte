@@ -139,7 +139,9 @@ public class RiskAssessFragment extends BaseMvpFragment<IRiskFragmentContract.IR
     @Override
     protected void initData() {
         super.initData();
-
+        for (RiskAssessBean.ServerParamsBean.WENJUANNAMEBean.RemindlistBean remindlistBean : wenjuannameBean.getRemindlist()) {
+            tvRiskOverTime.setText("本次评估为" + remindlistBean.getREMINDE_TYPE() + "评估，" + "距离结束" + remindlistBean.getRETIMECONTENT());
+        }
     }
 
     @Override

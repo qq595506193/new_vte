@@ -157,9 +157,11 @@ public class AssessActivity extends BaseMvpActivity<IAssessContract.IAssessModel
      */
     private void getTestTitle(List<Integer> list, String patient_id) {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("Type", "queryHZfengxianPG");
+        params.put("Type", "queryHZfengxianPG1");
         params.put("FORM_ID", list);
         params.put("PATIENT_ID", patient_id);
+        params.put("MERCHANT_ID", LoginActivity.MERCHANT_ID);
+        params.put("SITE_ID", LoginActivity.SITE_ID);
         params.put("tk", SpUtil.getString(App.getContext(), "tk", null));
         presenter.getTestTitle(params);
     }
@@ -215,7 +217,7 @@ public class AssessActivity extends BaseMvpActivity<IAssessContract.IAssessModel
         if (loadingDialog == null) {
             loadingDialog = LoadingDialog.getDialog(this,
                     "努力加载中",
-                    true,
+                    false,
                     null);
         } else if (loadingDialog.isShowing()) {
             loadingDialog.setMessage("努力加载中");

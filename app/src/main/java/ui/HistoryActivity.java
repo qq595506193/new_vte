@@ -562,7 +562,7 @@ public class HistoryActivity extends BaseMvpActivity<IHistoryContract.IHistoryMo
         if (loadingDialog == null) {
             loadingDialog = LoadingDialog.getDialog(this,
                     "努力加载中",
-                    true,
+                    false,
                     null);
         } else if (loadingDialog.isShowing()) {
             loadingDialog.setMessage("努力加载中");

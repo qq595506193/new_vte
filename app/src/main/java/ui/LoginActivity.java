@@ -38,6 +38,9 @@ public class LoginActivity extends BaseMvpActivity<ILoginContract.ILoginModel, I
 
     public static final String TAG_EXIT = "LoginActivity";
 
+    public static final String MERCHANT_ID = "3100";
+    public static final String SITE_ID = "3100";
+
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.ed_username)
@@ -98,8 +101,8 @@ public class LoginActivity extends BaseMvpActivity<ILoginContract.ILoginModel, I
         params.put("Type", "login");
         params.put("ACCOUNT", ACCOUNT);
         params.put("PASS_WORD", PASS_WORD);
-        params.put("SITE_ID", "3100");
-        params.put("MERCHANT_ID", "3100");
+        params.put("SITE_ID", SITE_ID);
+        params.put("MERCHANT_ID", MERCHANT_ID);
         presenter.getLogin(params);
     }
 
@@ -129,7 +132,7 @@ public class LoginActivity extends BaseMvpActivity<ILoginContract.ILoginModel, I
         if (loadingDialog == null) {
             loadingDialog = LoadingDialog.getDialog(this,
                     "努力加载中",
-                    true,
+                    false,
                     null);
         } else if (loadingDialog.isShowing()) {
             loadingDialog.setMessage("努力加载中");
