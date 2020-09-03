@@ -14,7 +14,7 @@
     <LinearLayout
         android:id="@+id/ll_select"
         android:layout_width="@dimen/dp_0"
-        android:layout_height="@dimen/dp_25"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/dp_10"

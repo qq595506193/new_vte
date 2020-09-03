@@ -104,7 +104,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     //弹出dialog
     protected void onExit() {
-        builder = new AlertDialog.Builder(this).setTitle("检测到账号在其他设备登录").setMessage("如果不是本人登录请联系培训机构").setPositiveButton("退出", new DialogInterface.OnClickListener() {
+        builder = new AlertDialog.Builder(this).setTitle("提示").setMessage("您的账号已在其它设备登录。如果不是您本人操作，请及时修改密码。").setPositiveButton("退出", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 getOut();

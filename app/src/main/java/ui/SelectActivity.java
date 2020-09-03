@@ -109,7 +109,7 @@ public class SelectActivity extends BaseMvpActivity<IPatientListContract.IPatien
 
 
     @Override
-    @OnClick({R.id.iv_message, R.id.iv_select_back})
+    @OnClick({R.id.iv_message, R.id.iv_select_back, R.id.tv_main_title})
     public void widgetClick(View v) {
         switch (v.getId()) {
             case R.id.iv_message:
@@ -121,6 +121,9 @@ public class SelectActivity extends BaseMvpActivity<IPatientListContract.IPatien
             case R.id.iv_select_back:
                 // 点击返回键
                 finish();
+                break;
+            case R.id.tv_main_title:
+
                 break;
         }
     }
@@ -278,6 +281,11 @@ public class SelectActivity extends BaseMvpActivity<IPatientListContract.IPatien
                 intent.putExtra("patientInfo", serverParamsBean);
                 intent.putExtra("loginMsg", loginBean);
                 startActivity(intent);
+
+//                Intent intentToDocAudit = new Intent(SelectActivity.this, DocAuditActivity.class);
+//                intentToDocAudit.putExtra("patientInfo", serverParamsBean);
+//                intentToDocAudit.putExtra("loginMsg", loginBean);
+//                startActivity(intentToDocAudit);
             }
         });
 

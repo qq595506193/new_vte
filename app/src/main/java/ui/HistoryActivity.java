@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -30,8 +33,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import adapter.DiagnoseAdapter;
 import adapter.ElementAdater;
 import adapter.HistoryTitleAdapter;
+import adapter.SuggestAdapter;
 import app.App;
 import base.BaseMvpActivity;
 import base.BasePresenter;
@@ -68,12 +73,8 @@ public class HistoryActivity extends BaseMvpActivity<IHistoryContract.IHistoryMo
     TextView tvPatientOffice;// 患者科室
     @BindView(R.id.tv_patient_mark)
     TextView tvPatientMark;// 患者住院号
-    @BindView(R.id.tv_zhenduan)
-    TextView tvZhenduan;
     @BindView(R.id.cly_02)
     ConstraintLayout cly02;// 表头
-    @BindView(R.id.tv_zhenduan_content)
-    TextView tvZhenduanContent;// 诊断内容
     @BindView(R.id.rv_table_list)
     RecyclerView rvTableList;// 不同表标题
     @BindView(R.id.tv_table_name)
@@ -96,16 +97,8 @@ public class HistoryActivity extends BaseMvpActivity<IHistoryContract.IHistoryMo
     TextView txtShow;// 评估说明
     @BindView(R.id.rv_element)
     RecyclerView rvElement;// 危险因素列表
-    @BindView(R.id.tv_txt_element)
-    TextView tvTxtElement;
-    @BindView(R.id.txt_advise)
-    TextView txtAdvise;// 预防处理建议
-    @BindView(R.id.txt_nursing)
-    TextView txtNursing;// 护理处置建议
-    @BindView(R.id.txt_note)
-    TextView txtNote;// 患者温馨提示
-    @BindView(R.id.txt_other)
-    TextView txtOther;// 其他
+    @BindView(R.id.rv_suggest)
+    RecyclerView rvSuggest;
     @BindView(R.id.cly_visib)
     ConstraintLayout clyVisib;// 有数据
     @BindView(R.id.cly_visib_02)
@@ -116,9 +109,12 @@ public class HistoryActivity extends BaseMvpActivity<IHistoryContract.IHistoryMo
     private LoadingDialog loadingDialog;// 加载中动画
 
     private PatientListBean.ServerParamsBean serverParamsBean;// 当前患者信息
+
     private LoginBean loginBean;// 登录信息
-    private HistoryTitleAdapter historyTitleAdapter;
-    private ElementAdater elementAdater;
+    private HistoryTitleAdapter historyTitleAdapter;// 表名列表适配器
+    private DiagnoseAdapter diagnoseAdapter;// 诊断内容列表适配器
+    private ElementAdater elementAdater;//
+    private SuggestAdapter suggestAdapter;
 
     @Override
     @OnClick({R.id.tv_back, R.id.iv_message, R.id.iv_select_back, R.id.btn_log})
@@ -180,9 +176,33 @@ public class HistoryActivity extends BaseMvpActivity<IHistoryContract.IHistoryMo
         historyTitleAdapter = new HistoryTitleAdapter(this);
         rvTableList.setAdapter(historyTitleAdapter);
         // 危险因素列表
+        // recyclerview 添加item的下划线，和方向
+        rvElement.setItemAnimator(new DefaultItemAnimator());
+        rvElement.addItemDecoration(new DividerItemDecoration(
+                this, DividerItemDecoration.VERTICAL));
+        //
         rvElement.setLayoutManager(new LinearLayoutManager(this));
+
         elementAdater = new ElementAdater(this);
         rvElement.setAdapter(elementAdater);
+
+        // 建议列表
+        rvSuggest.setLayoutManager(new LinearLayoutManager(this));
+        suggestAdapter = new SuggestAdapter(this);
+        rvSuggest.setAdapter(suggestAdapter);
+
+        /**
+         * 加入header
+         */
+        setAdaperHeader();
+
+        // 建议列表
+
+    }
+
+    private void setAdaperHeader() {
+        View view = LayoutInflater.from(this).inflate(R.layout.item_wxys_header, null);
+        elementAdater.setHeader(view);
     }
 
     @Override
@@ -193,8 +213,9 @@ public class HistoryActivity extends BaseMvpActivity<IHistoryContract.IHistoryMo
         }
     }
 
+
     /**
-     * 设置数据
+     * 设置历史报告数据
      *
      * @param reportList
      */
@@ -204,8 +225,8 @@ public class HistoryActivity extends BaseMvpActivity<IHistoryContract.IHistoryMo
             historyTitleAdapter.setListBeans(reportList);
         }
         for (HistoryAssessBean.ServerParamsBean.ReportListBean reportListBean : reportList) {
-            setReportData(reportListBean);
             setLineView(reportListBean);// 设置散点统计图
+            setReportData(reportListBean);
         }
 
     }
@@ -471,65 +492,30 @@ public class HistoryActivity extends BaseMvpActivity<IHistoryContract.IHistoryMo
                     txtShow.setText(sublistBean.getRISK_DETAIL_DESC());
                 }
                 // 危险因素
-                elementAdater.setWxysBeans(wenjuanBean.getWxys());
-                // 预防处理建议
-                if (wenjuanBean.getDOCTOR_ADVICE().size() != 0) {
-                    List<HistoryAssessBean.ServerParamsBean.ReportListBean.WENJUANBean.DOCTORADVICEBean> doctor_advice = wenjuanBean.getDOCTOR_ADVICE();
-                    String s = "";
-                    for (int i = 0; i < doctor_advice.size(); i++) {
-                        HistoryAssessBean.ServerParamsBean.ReportListBean.WENJUANBean.DOCTORADVICEBean doctoradviceBean = doctor_advice.get(i);
-                        s += doctoradviceBean.getADVICE_CONTENT() + "\n";
-                    }
-                    txtAdvise.setText(s);
-                } else {
-                    txtAdvise.setText("暂无建议");
-                }
-                // 护理处置建议
-                if (wenjuanBean.getNURSE_ADVICE().size() != 0) {
-                    List<HistoryAssessBean.ServerParamsBean.ReportListBean.WENJUANBean.NURSEADVICEBean> nurse_advice = wenjuanBean.getNURSE_ADVICE();
-                    String s = "";
-                    for (int i = 0; i < nurse_advice.size(); i++) {
-                        HistoryAssessBean.ServerParamsBean.ReportListBean.WENJUANBean.NURSEADVICEBean nurseadviceBean = nurse_advice.get(i);
-                        s += nurseadviceBean.getADVICE_CONTENT() + "\n";
-                    }
-                    txtNursing.setText(s);
-                } else {
-                    txtNursing.setText("暂无建议");
-                }
-                // 患者温馨提示
-                if (wenjuanBean.getPATIENT_ADVICE().size() != 0) {
-                    List<HistoryAssessBean.ServerParamsBean.ReportListBean.WENJUANBean.PATIENTADVICEBean> patient_advice = wenjuanBean.getPATIENT_ADVICE();
-                    String s = "";
-                    for (int i = 0; i < patient_advice.size(); i++) {
-                        HistoryAssessBean.ServerParamsBean.ReportListBean.WENJUANBean.PATIENTADVICEBean patientadviceBean = patient_advice.get(i);
-                        if (patientadviceBean.getADVICE_CONTENT() != null) {
-                            s += patientadviceBean.getADVICE_CONTENT() + "\n";
-                        } else {
-                            s = "暂无建议";
-                        }
-                    }
-                    txtNote.setText(s);
-                } else {
-                    txtNote.setText("暂无建议");
-                }
-                // 其他
-                if (wenjuanBean.getELSE_ADVICE().size() != 0) {
-                    List<HistoryAssessBean.ServerParamsBean.ReportListBean.WENJUANBean.ELSEADVICEBean> else_advice = wenjuanBean.getELSE_ADVICE();
-                    String s = "";
-                    for (int i = 0; i < else_advice.size(); i++) {
-                        HistoryAssessBean.ServerParamsBean.ReportListBean.WENJUANBean.ELSEADVICEBean else_adviceBean = else_advice.get(i);
-                        if (else_adviceBean.getADVICE_CONTENT() != null) {
-                            s += else_adviceBean.getADVICE_CONTENT() + "\n";
-                        } else {
-                            s = "暂无建议";
-                        }
-                    }
-                    txtOther.setText(s);
-                } else {
-                    txtOther.setText("暂无建议");
-                }
+                setElementData(wenjuanBean.getWxys());
             }
         }
+        // 设置建议
+        setSuggest(reportListBean.getWENJUAN());
+    }
+
+    /**
+     * 设置建议
+     *
+     * @param wenjuan
+     */
+    private void setSuggest(List<HistoryAssessBean.ServerParamsBean.ReportListBean.WENJUANBean> wenjuan) {
+        suggestAdapter.setWenjuanBeans(wenjuan);
+    }
+
+
+    /**
+     * 危险因素
+     *
+     * @param wxys
+     */
+    private void setElementData(List<HistoryAssessBean.ServerParamsBean.ReportListBean.WENJUANBean.WxysBean> wxys) {
+        elementAdater.setWxysBeans(wxys);
     }
 
     /**

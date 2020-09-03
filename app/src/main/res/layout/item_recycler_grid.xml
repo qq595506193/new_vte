@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_bianma"
+        style="@style/style_14p_brown"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="2017886655" />
+
+    <ImageView
+        android:layout_width="1dp"
+        android:layout_height="60dp"
+        android:background="#000000" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        style="@style/style_14p_brown"
+        android:layout_width="@dimen/dp_150"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="快" />
+
+    <ImageView
+        android:layout_width="1dp"
+        android:layout_height="60dp"
+        android:background="#000000" />
+
+    <TextView
+        android:id="@+id/tv_leve_sum"
+        style="@style/style_14p_brown"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="432" />
+
+    <ImageView
+        android:layout_width="1dp"
+        android:layout_height="60dp"
+        android:background="#000000" />
+
+    <TextView
+        android:id="@+id/tv_leve"
+        style="@style/style_14p_brown"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="430" />
+
+    <ImageView
+        android:layout_width="1dp"
+        android:layout_height="60dp"
+        android:background="#000000" />
+
+    <TextView
+        android:id="@+id/tv_risk_content"
+        style="@style/style_14p_brown"
+        android:layout_width="@dimen/dp_150"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="-2" />
+
+    <ImageView
+        android:layout_width="1dp"
+        android:layout_height="60dp"
+        android:background="#000000" />
+
+    <TextView
+        android:id="@+id/tv_risk_time"
+        style="@style/style_14p_brown"
+        android:layout_width="@dimen/dp_70"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="3-27" />
+
+    <ImageView
+        android:layout_width="1dp"
+        android:layout_height="60dp"
+        android:background="#000000" />
+
+    <LinearLayout
+        android:id="@+id/ll_do"
+        style="@style/style_14p_brown"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_do"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_sure"
+            android:text="审核报告"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+</LinearLayout>
+

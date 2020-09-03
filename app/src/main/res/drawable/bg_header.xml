@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 实现了只有left，top，right的3面边框, 底部不需要 -->
+
+    <item>
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="@dimen/dp_1"
+                android:color="@color/black" />
+        </shape>
+    </item>
+
+    <item
+        android:left="@dimen/dp_1"
+        android:right="@dimen/dp_1"
+        android:top="@dimen/dp_1">
+        <!-- 可以完全理解为top就是paddingTop，bottom就是paddingBottom。就是内边距。
+        这边的3面有内边距，-->
+
+        <!-- 在实际使用中我发现1dp达不到显示效果，而@dimen/dp_2正好可以显示边框 -->
+
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" />
+        </shape>
+    </item>
+</layer-list>

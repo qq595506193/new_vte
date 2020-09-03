@@ -36,12 +36,14 @@ public class ApiService {
     // 历史评估查询
     public static final String HISTORY_ASSESS = "XiaoYiRobotSer/RobotBackground.do";
 
+    // 医生审核列表查询
+    public static final String DOCTOR_AUDIT = "XiaoYiRobotSer/RobotBackground.do";
+
     // 提交表格
     public static final String COMMIT = "XiaoYiRobotSer/RobotBackground.do";
 
     // 提交表格
     public static final String SAVE = "XiaoYiRobotSer/RobotBackground.do";
-
 
 
     // 取消评估

@@ -2,6 +2,7 @@ package base.http;
 
 import java.util.HashMap;
 
+import bean.DocAuditBean;
 import bean.HistoryAssessBean;
 import bean.LoginBean;
 import bean.LoginTypeBean;
@@ -53,6 +54,10 @@ public interface IRetrofitServer {
     // 消息状态修改
     @GET
     Observable<MessageUpdateBean> getMessageTypeUpdate(@Url String apiUrl, @QueryMap HashMap<String, Object> params);
+
+    // 查询医生可审核列表
+    @GET
+    Observable<DocAuditBean> getDocAudit(@Url String apiUrl, @QueryMap HashMap<String, Object> params);
 
 //    // 查询未读消息条数
 //    @GET

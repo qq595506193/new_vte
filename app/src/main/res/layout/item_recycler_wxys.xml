@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_25"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_wxys"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_25"
+        android:layout_weight="3.0"
+        android:gravity="center"
+        android:text="2017886655"
+        android:textSize="@dimen/sp_6" />
+
+    <ImageView
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_25"
+        android:layout_weight="0.01"
+        android:background="#000000" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_25"
+        android:layout_weight="3.0"
+        android:gravity="center"
+        android:text="快"
+        android:textSize="@dimen/sp_6" />
+
+    <ImageView
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_25"
+        android:layout_weight="0.01"
+        android:background="#000000" />
+
+    <TextView
+        android:id="@+id/tv_leve_sum"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_25"
+        android:layout_weight="3.0"
+        android:gravity="center"
+        android:text="432"
+        android:textSize="@dimen/sp_6" />
+
+    <ImageView
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_25"
+        android:layout_weight="0.01"
+        android:background="#000000" />
+
+    <TextView
+        android:id="@+id/tv_index"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_25"
+        android:layout_weight="3.0"
+        android:gravity="center"
+        android:text="430"
+        android:textSize="@dimen/sp_6" />
+
+
+</LinearLayout>
+
