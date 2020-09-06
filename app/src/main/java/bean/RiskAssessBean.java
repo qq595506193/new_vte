@@ -698,6 +698,24 @@ public class RiskAssessBean implements Serializable {
                         private Object ANALYSIS_SOURCE_PARA;
                         private Object CURRENT_FACTOR_TYPE;
                         private List<OptionListBean> optionList;
+                        private boolean isChecked;
+                        private int index = -1;
+
+                        public int getIndex() {
+                            return index;
+                        }
+
+                        public void setIndex(int index) {
+                            this.index = index;
+                        }
+
+                        public boolean isChecked() {
+                            return isChecked;
+                        }
+
+                        public void setChecked(boolean checked) {
+                            isChecked = checked;
+                        }
 
                         public int getFACTOR_GROUP_ID() {
                             return FACTOR_GROUP_ID;
