@@ -41,7 +41,7 @@ public class TestTitleAdapter extends RecyclerView.Adapter<TestTitleAdapter.View
     @NonNull
     @Override
     public TestTitleAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(mLayoutInflater.inflate(R.layout.item_risk_table, parent, false));
+        return new ViewHolder(mLayoutInflater.inflate(R.layout.item_risk_title, parent, false));
     }
 
     @Override

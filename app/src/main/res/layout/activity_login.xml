@@ -56,7 +56,7 @@
             android:hint="请输入您的账号"
             android:maxLines="1"
             android:singleLine="true"
-            android:text="changhao" />
+            android:text="xzq" />
 
         <TextView
             android:layout_width="wrap_content"

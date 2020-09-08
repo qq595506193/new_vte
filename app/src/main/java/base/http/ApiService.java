@@ -39,6 +39,12 @@ public class ApiService {
     // 医生审核列表查询
     public static final String DOCTOR_AUDIT = "XiaoYiRobotSer/RobotBackground.do";
 
+    // 此卷作废
+    public static final String CANCELLATION = "XiaoYiRobotSer/RobotBackground.do";
+
+    // 审核通过
+    public static final String APPROVE = "XiaoYiRobotSer/RobotBackground.do";
+
     // 提交表格
     public static final String COMMIT = "XiaoYiRobotSer/RobotBackground.do";
 

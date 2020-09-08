@@ -1,8 +1,9 @@
 package bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class DocAuditBean {
+public class DocAuditBean implements Serializable {
 
     /**
      * code : 0
@@ -48,7 +49,7 @@ public class DocAuditBean {
         this.server_params = server_params;
     }
 
-    public static class ServerParamsBean {
+    public static class ServerParamsBean implements Serializable  {
         /**
          * PATIENT_ID : 16160411
          * DOCTOR_NAME : null
@@ -193,7 +194,7 @@ public class DocAuditBean {
             this.reportList = reportList;
         }
 
-        public static class JibinlistBean {
+        public static class JibinlistBean implements Serializable  {
             /**
              * DIAGNOSIS_DISEASE_NAME : 高血压
              * DIAGNOSIS_DATE : 20191203102842
@@ -219,7 +220,7 @@ public class DocAuditBean {
             }
         }
 
-        public static class ReportListBean {
+        public static class ReportListBean implements Serializable  {
             /**
              * MERCHANT_ID : 3100
              * SITE_ID : 3100
@@ -249,6 +250,8 @@ public class DocAuditBean {
             private String VALID_END;
             private Object SERVICE_PLAN_ID;
             private List<WENJUANBean> WENJUAN;
+            public boolean che_color = false;
+            public int form_id = 1;
 
             public int getMERCHANT_ID() {
                 return MERCHANT_ID;
@@ -354,7 +357,7 @@ public class DocAuditBean {
                 this.WENJUAN = WENJUAN;
             }
 
-            public static class WENJUANBean {
+            public static class WENJUANBean implements Serializable  {
                 /**
                  * REPORT_ID : 13957
                  * REPORT_TIME : 20200828092627
@@ -659,7 +662,7 @@ public class DocAuditBean {
                     this.wxys = wxys;
                 }
 
-                public static class PATIENTADVICEBean {
+                public static class PATIENTADVICEBean implements Serializable  {
                     /**
                      * FORM_ID : 1
                      * CURRENT_RISK_LEVEL : 7
@@ -755,7 +758,7 @@ public class DocAuditBean {
                     }
                 }
 
-                public static class DOCTORADVICEBean {
+                public static class DOCTORADVICEBean  implements Serializable {
                     /**
                      * FORM_ID : 1
                      * CURRENT_RISK_LEVEL : 7
@@ -851,7 +854,7 @@ public class DocAuditBean {
                     }
                 }
 
-                public static class NURSEADVICEBean {
+                public static class NURSEADVICEBean  implements Serializable {
                     /**
                      * FORM_ID : 1
                      * CURRENT_RISK_LEVEL : 7
@@ -947,7 +950,7 @@ public class DocAuditBean {
                     }
                 }
 
-                public static class SublistBean {
+                public static class SublistBean  implements Serializable {
                     /**
                      * REPORT_ID : 13957
                      * RISK_ID : 14920
@@ -1103,7 +1106,7 @@ public class DocAuditBean {
                     }
                 }
 
-                public static class WxysBean {
+                public static class WxysBean implements Serializable  {
                     /**
                      * RISK_FACTOR_ID : 1005
                      * RISK_FACTOR_NAME : ≥75岁

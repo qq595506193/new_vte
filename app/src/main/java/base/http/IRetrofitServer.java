@@ -2,6 +2,8 @@ package base.http;
 
 import java.util.HashMap;
 
+import bean.ApproveBean;
+import bean.CancellationBean;
 import bean.DocAuditBean;
 import bean.HistoryAssessBean;
 import bean.LoginBean;
@@ -58,6 +60,14 @@ public interface IRetrofitServer {
     // 查询医生可审核列表
     @GET
     Observable<DocAuditBean> getDocAudit(@Url String apiUrl, @QueryMap HashMap<String, Object> params);
+
+    // 此卷作废
+    @GET
+    Observable<CancellationBean> getCiJuanZuoFei(@Url String apiUrl, @QueryMap HashMap<String, Object> params);
+
+    // 审核通过
+    @GET
+    Observable<ApproveBean> getShenHeTongGuo(@Url String apiUrl, @QueryMap HashMap<String, Object> params);
 
 //    // 查询未读消息条数
 //    @GET

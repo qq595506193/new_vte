@@ -16,6 +16,7 @@ import com.example.new_vte_2020_01.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import bean.DocAuditBean;
 import bean.HistoryAssessBean;
 
 public class HistoryTitleAdapter extends RecyclerView.Adapter<HistoryTitleAdapter.ViewHolder> {
@@ -42,13 +43,14 @@ public class HistoryTitleAdapter extends RecyclerView.Adapter<HistoryTitleAdapte
     @NonNull
     @Override
     public HistoryTitleAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(mLayoutInflater.inflate(R.layout.item_risk_table, parent, false));
+        return new ViewHolder(mLayoutInflater.inflate(R.layout.item_risk_title, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull HistoryTitleAdapter.ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         final HistoryAssessBean.ServerParamsBean.ReportListBean reportListBean = listBeans.get(position);
         holder.tv_risk_table.setText(reportListBean.getFORM_NAME());
+
         if (reportListBean.getFORM_ID() == 2) {
             reportListBean.form_id = 2;
         } else if (reportListBean.getFORM_ID() == 1) {

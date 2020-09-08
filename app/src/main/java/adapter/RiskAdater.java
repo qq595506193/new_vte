@@ -79,10 +79,8 @@ public class RiskAdater extends RecyclerView.Adapter<RiskAdater.ViewHolder> {
                         wenjuanBeans.get(i).getSublist().get(sublistBean.getIndex()).setChecked(false);
                     }
                 }
-
             }
         });
-
     }
 
     @Override

@@ -9,8 +9,8 @@
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="@dimen/dp_0"
-        android:layout_height="match_parent"
         android:layout_weight="3.0"
+        android:layout_height="match_parent"
         android:gravity="center"
         android:text="风险因素"
         android:textColor="@color/black"
@@ -18,8 +18,8 @@
 
     <ImageView
         android:layout_width="@dimen/dp_0"
-        android:layout_height="match_parent"
         android:layout_weight="0.01"
+        android:layout_height="match_parent"
         android:background="@color/black" />
 
 

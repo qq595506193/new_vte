@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.example.new_vte_2020_01.R;
 
+import junit.framework.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,36 @@ public class DiagnoseAdapter extends RecyclerView.Adapter<DiagnoseAdapter.ViewHo
     private LayoutInflater mLayoutInflater;
 
     private List<DocAuditBean.ServerParamsBean.JibinlistBean> jibinlistBeans;
+
+
+    //隐藏
+    public void setHideList(List<DocAuditBean.ServerParamsBean.JibinlistBean> newList) {
+        this.jibinlistBeans = newList;
+        notifyDataSetChanged();
+    }
+
+    //展开
+    public void setOpenList(List<DocAuditBean.ServerParamsBean.JibinlistBean> openList) {
+        this.jibinlistBeans = openList;
+        notifyDataSetChanged();
+    }
+
+    //不需要隐藏/展开
+    public void setRealList(List<DocAuditBean.ServerParamsBean.JibinlistBean> realList) {
+        this.jibinlistBeans = realList;
+        notifyDataSetChanged();
+    }
+
+    //清除数据
+    public void clearData() {
+        if (jibinlistBeans != null) {
+            this.jibinlistBeans.clear();
+            notifyDataSetChanged();
+        }
+    }
+
+
+
 
     public DiagnoseAdapter(Context context) {
         this.context = context;

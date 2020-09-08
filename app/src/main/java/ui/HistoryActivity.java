@@ -46,6 +46,7 @@ import bean.PatientListBean;
 import butterknife.BindView;
 import butterknife.OnClick;
 import contract.IHistoryContract;
+import customView.WrapContentLinearLayoutManager;
 import presenter.HistoryPresenter;
 import utils.LoadingDialog;
 import utils.SpUtil;
@@ -172,7 +173,9 @@ public class HistoryActivity extends BaseMvpActivity<IHistoryContract.IHistoryMo
         }
 
         // 标题列表
-        rvTableList.setLayoutManager(new LinearLayoutManager(App.getContext(), LinearLayoutManager.HORIZONTAL, false));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        rvTableList.setLayoutManager(new WrapContentLinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         historyTitleAdapter = new HistoryTitleAdapter(this);
         rvTableList.setAdapter(historyTitleAdapter);
         // 危险因素列表
@@ -181,13 +184,13 @@ public class HistoryActivity extends BaseMvpActivity<IHistoryContract.IHistoryMo
         rvElement.addItemDecoration(new DividerItemDecoration(
                 this, DividerItemDecoration.VERTICAL));
         //
-        rvElement.setLayoutManager(new LinearLayoutManager(this));
+        rvElement.setLayoutManager(new WrapContentLinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         elementAdater = new ElementAdater(this);
         rvElement.setAdapter(elementAdater);
 
         // 建议列表
-        rvSuggest.setLayoutManager(new LinearLayoutManager(this));
+        rvSuggest.setLayoutManager(new WrapContentLinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         suggestAdapter = new SuggestAdapter(this);
         rvSuggest.setAdapter(suggestAdapter);
 
@@ -219,7 +222,7 @@ public class HistoryActivity extends BaseMvpActivity<IHistoryContract.IHistoryMo
      *
      * @param reportList
      */
-    private void setHistoryData(List<HistoryAssessBean.ServerParamsBean.ReportListBean> reportList) {
+    private void setHistoryData(final List<HistoryAssessBean.ServerParamsBean.ReportListBean> reportList) {
         if (reportList != null) {
             reportList.get(0).che_color = true;
             historyTitleAdapter.setListBeans(reportList);
@@ -228,6 +231,16 @@ public class HistoryActivity extends BaseMvpActivity<IHistoryContract.IHistoryMo
             setLineView(reportListBean);// 设置散点统计图
             setReportData(reportListBean);
         }
+        historyTitleAdapter.setSetTableItem(new HistoryTitleAdapter.SetTableItem() {
+            @Override
+            public void setOnClickTableItem(int form_id, HistoryAssessBean.ServerParamsBean.ReportListBean reportListBean) {
+                for (HistoryAssessBean.ServerParamsBean.ReportListBean listBean : reportList) {
+                    if (listBean.getFORM_ID() == form_id) {
+                        setReportData(listBean);
+                    }
+                }
+            }
+        });
 
     }
 
@@ -440,6 +453,7 @@ public class HistoryActivity extends BaseMvpActivity<IHistoryContract.IHistoryMo
                 for (HistoryAssessBean.ServerParamsBean.ReportListBean.WENJUANBean.SublistBean sublistBean : wenjuanBean.getSublist()) {
                     txtCoding.setText(sublistBean.getREPORT_CODE());
                     txtTime.setText(sublistBean.getREPORT_TIME());
+                    txtTotal.setText(sublistBean.getCURRENT_RISK_VALUE() + "分");
                     // 危险等级
                     switch (sublistBean.getCURRENT_RISK_LEVEL()) {
                         case "5":
@@ -515,7 +529,11 @@ public class HistoryActivity extends BaseMvpActivity<IHistoryContract.IHistoryMo
      * @param wxys
      */
     private void setElementData(List<HistoryAssessBean.ServerParamsBean.ReportListBean.WENJUANBean.WxysBean> wxys) {
-        elementAdater.setWxysBeans(wxys);
+        if (wxys.size() != 0) {
+            elementAdater.setWxysBeans(wxys);
+        } else {
+            elementAdater.setZanwu(LayoutInflater.from(this).inflate(R.layout.item_zanwu_wxys, null));
+        }
     }
 
     /**
@@ -539,12 +557,7 @@ public class HistoryActivity extends BaseMvpActivity<IHistoryContract.IHistoryMo
 
     @Override
     public void setListener() {
-        historyTitleAdapter.setSetTableItem(new HistoryTitleAdapter.SetTableItem() {
-            @Override
-            public void setOnClickTableItem(int form_id, HistoryAssessBean.ServerParamsBean.ReportListBean reportListBean) {
-                setReportData(reportListBean);
-            }
-        });
+
     }
 
     @Override
